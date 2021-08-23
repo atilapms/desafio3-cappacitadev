@@ -48,4 +48,8 @@ app.post('/curar', (req, res) => {
   res.send(dataBase.curarPokemon(req.body.id))
 })
 
+app.post('/reviver', (req, res) => {
+  res.send(dataBase.reviverPokemon(req.body.id))
+})
+
 app.listen(3003)

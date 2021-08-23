@@ -71,9 +71,21 @@ function batalhaPokemon(id1, id2) {
 }
 
 function curarPokemon(id) {
+  if(pokemons[id].hp == 0) {
+    return `${pokemons[id].nome} sem HP. Utilize o Reviver.`
+  }
   pokemons[id].hp = pokemons[id].hp + 20
   if(pokemons[id].hp >= 100) pokemons[id].hp = 100
   return pokemons[id]
 }
 
-module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon, curarPokemon }
+function reviverPokemon(id) {
+  if(pokemons[id].hp == 0) {
+    pokemons[id].hp = 100
+    return pokemons[id]
+  } else {
+    return `Só é possível reviver pokemons com HP 0, utilize o spray Curar. O HP de ${pokemons[id].nome} é ${pokemons[id].hp}`
+  }
+}
+
+module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon, curarPokemon, reviverPokemon }
